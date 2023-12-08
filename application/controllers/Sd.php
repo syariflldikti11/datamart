@@ -49,6 +49,8 @@ public function ajax_dosen()
   }
 function semua_dosen()
     {
+     
+       $this->session->set_userdata('dosen', "id_ikatan_kerja <> 'ok'");
         $data = array(
             'judul' => 'Daftar Semua Dosen'
         );
@@ -56,6 +58,8 @@ function semua_dosen()
     }
     function dosen_homebase()
     {
+
+       $this->session->set_userdata('dosen', "id_ikatan_kerja in ('A','B','I')");
         $data = array(
             'judul' => 'Daftar Dosen Homebase'
         );

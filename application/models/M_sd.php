@@ -12,8 +12,10 @@ class M_sd extends CI_model{
 
 	private function _get_datatables_query()
     {
+        $dosen = $this->session->userdata('dosen');
         $this->db->from($this->table);
-        //$this->db->where('jenjang_tertinggi="S3"');
+        $this->db->where("".$dosen."");
+    
         $i = 0;
         foreach ($this->column_search as $item) // loop kolom 
         {
