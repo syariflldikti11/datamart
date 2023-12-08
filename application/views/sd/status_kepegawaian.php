@@ -17,6 +17,7 @@
                           <th>No</th>
                            <th>Kode PT</th>
                           <th>Nama PT</th>
+                             <th>Provinsi</th>
                           <th>Dosen Tetap</th>
                           <th>Dosen PNS DPK</th>
                           <th>NIDK</th>
@@ -34,6 +35,7 @@
                           <td><?= $no++; ?></td>
                            <td><?= $d->kode_pt; ?></td>
                           <td><?= $d->nama_pt; ?></td>
+                           <td><?= $d->provinsi_pt; ?></td>
                           <td><?= $d->Dosen_Tetap; ?></td>
                            <td><?= $d->Dosen_PNS_DPK; ?></td>
                           <td><?= $d->NIDK; ?></td>

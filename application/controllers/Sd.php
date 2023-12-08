@@ -25,6 +25,7 @@ public function ajax_dosen()
           $row[]= $d->kode_pt; 
          
           $row[]= $d->nama_pt; 
+          $row[]= $d->provinsi_pt; 
           $row[]= $d->Kelompok_No_Reg; 
           $row[]= $d->nidn;  
           $row[]= $d->nama_dosen; 
@@ -52,6 +53,13 @@ function semua_dosen()
             'judul' => 'Daftar Semua Dosen'
         );
        $this->template->load('template/template', 'sd/semua_dosen', $data);
+    }
+    function dosen_homebase()
+    {
+        $data = array(
+            'judul' => 'Daftar Dosen Homebase'
+        );
+       $this->template->load('template/template', 'sd/dosen_homebase', $data);
     }
 function jenjang_pendidikan()
     {

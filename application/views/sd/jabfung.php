@@ -17,6 +17,7 @@
                           <th>No</th>
                            <th>Kode PT</th>
                           <th>Nama PT</th>
+                             <th>Provinsi</th>
                           <th>Asisten Ahli</th>
                           <th>Lektor</th>
                           <th>Lektor Kepala</th>
@@ -35,6 +36,7 @@
                           <td><?= $no++; ?></td>
                            <td><?= $d->kode_pt; ?></td>
                           <td><?= $d->nama_pt; ?></td>
+                          <td><?= $d->provinsi_pt; ?></td>
                           <td><?= $d->Asisten_Ahli; ?></td>
                            <td><?= $d->Lektor; ?></td>
                           <td><?= $d->Lektor_Kepala; ?></td>

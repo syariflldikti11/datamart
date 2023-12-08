@@ -5,7 +5,7 @@
                 <div class="border-bottom title-part-padding">
                   <h4 class="card-title mb-0"> <?= $judul; ?></h4>
                   <br />
-            
+             <b>     Note : Dosen homebase adalah dosen dengan status (Dosen Tetap, Dosen PNS DPK, Dosen dengan perjanjian kerja)</b>
                 </div>
                 <div class="card-body">
                   

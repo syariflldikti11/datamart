@@ -17,6 +17,7 @@
                           <th>No</th>
                            <th>Kode PT</th>
                           <th>Nama PT</th>
+                          <th>Provinsi</th>
                           <th>D3</th>
                           <th>D4</th>
                           <th>S1</th>
@@ -41,6 +42,7 @@
                           <td><?= $no++; ?></td>
                            <td><?= $d->kode_pt; ?></td>
                           <td><?= $d->nama_pt; ?></td>
+                          <td><?= $d->provinsi_pt; ?></td>
                           <td><?= $d->D3; ?></td>
                            <td><?= $d->D4; ?></td>
                           <td><?= $d->S1; ?></td>

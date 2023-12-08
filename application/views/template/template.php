@@ -260,6 +260,11 @@
                         >
                       </li>
                        <li class="sidebar-item">
+                        <a href="<?= base_url('sd/dosen_homebase'); ?>" class="sidebar-link"
+                          ><span class="hide-menu">Dosen Homebase </span></a
+                        >
+                      </li>
+                       <li class="sidebar-item">
                         <a href="<?= base_url('sd/jenjang_pendidikan'); ?>" class="sidebar-link"
                           ><span class="hide-menu">Jenjang Pendidikan </span></a
                         >

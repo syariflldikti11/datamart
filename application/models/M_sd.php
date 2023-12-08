@@ -4,15 +4,16 @@ class M_sd extends CI_model{
 	
  var $table = 'dosen_list_dosen';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
-    var $column_order = array(null,null, 'kode_pt', 'nama_pt','Kelompok_No_Reg','nidn','nama_dosen','jk','jenjang_tertinggi','jabatan_akademik','nm_ikatan_kerja','nm_stat_aktif');
+    var $column_order = array(null,null, 'kode_pt', 'nama_pt', 'provinsi_pt','Kelompok_No_Reg','nidn','nama_dosen','jk','jenjang_tertinggi','jabatan_akademik','nm_ikatan_kerja','nm_stat_aktif');
 
-    var $column_search = array('kode_pt', 'nama_pt','Kelompok_No_Reg','nidn','nama_dosen');
+    var $column_search = array('kode_pt', 'nama_pt', 'provinsi_pt','Kelompok_No_Reg','nidn','nama_dosen');
     // default order 
     var $order = array('kode_pt' => 'asc');
 
 	private function _get_datatables_query()
     {
         $this->db->from($this->table);
+        //$this->db->where('jenjang_tertinggi="S3"');
         $i = 0;
         foreach ($this->column_search as $item) // loop kolom 
         {
@@ -49,6 +50,7 @@ class M_sd extends CI_model{
         return $query->result();
     }
 
+
     function count_filtered()
     {
         $this->_get_datatables_query();
@@ -68,6 +70,7 @@ class M_sd extends CI_model{
 		$query=$this->db->query("SELECT
 ds.kode_pt,
 ds.nama_pt,
+ds.provinsi_pt,
 SUM(CASE ds.jenjang_tertinggi WHEN 'D3' THEN 1 ELSE 0 END) as D3,
 SUM(CASE ds.jenjang_tertinggi WHEN 'D4' THEN 1 ELSE 0 END) as D4,
 SUM(CASE ds.jenjang_tertinggi WHEN 'S1' THEN 1 ELSE 0 END) as S1,
@@ -86,7 +89,7 @@ dosen_list_dosen ds
 WHERE 
 ds.id_ikatan_kerja in ('A','B','I')
 
-GROUP BY ds.kode_pt,ds.nama_pt
+GROUP BY ds.kode_pt,ds.nama_pt,ds.provinsi_pt
 ORDER BY ds.kode_pt"); 
 		return $query->result();
 	}
@@ -96,6 +99,7 @@ ORDER BY ds.kode_pt");
 		$query=$this->db->query("SELECT
 ds.kode_pt,
 ds.nama_pt,
+ds.provinsi_pt,
 SUM(CASE ds.jabatan_akademik WHEN 'Asisten Ahli' THEN 1 ELSE 0 END) as Asisten_Ahli,
 SUM(CASE ds.jabatan_akademik WHEN 'Lektor' THEN 1 ELSE 0 END) as Lektor,
 SUM(CASE ds.jabatan_akademik WHEN 'Lektor Kepala' THEN 1 ELSE 0 END) as Lektor_Kepala,
@@ -108,7 +112,7 @@ dosen_list_dosen ds
 WHERE 
 ds.id_ikatan_kerja in ('A','B','I')
 
-GROUP BY ds.kode_pt,ds.nama_pt
+GROUP BY ds.kode_pt,ds.nama_pt,ds.provinsi_pt
 ORDER BY ds.kode_pt"); 
 		return $query->result();
 	}
@@ -117,6 +121,7 @@ ORDER BY ds.kode_pt");
 		$query=$this->db->query("SELECT
 ds.kode_pt,
 ds.nama_pt,
+ds.provinsi_pt,
 SUM(CASE ds.jk WHEN 'L' THEN 1 ELSE 0 END) as L,
 SUM(CASE ds.jk WHEN 'P' THEN 1 ELSE 0 END) as P,
 count(jk) as Jumlah
@@ -126,7 +131,7 @@ dosen_list_dosen ds
 WHERE 
 ds.id_ikatan_kerja in ('A','B','I')
 
-GROUP BY ds.kode_pt,ds.nama_pt
+GROUP BY ds.kode_pt,ds.nama_pt,ds.provinsi_pt
 ORDER BY ds.kode_pt"); 
 		return $query->result();
 	}
@@ -135,6 +140,7 @@ ORDER BY ds.kode_pt");
 		$query=$this->db->query("SELECT
 ds.kode_pt,
 ds.nama_pt,
+ds.provinsi_pt,
 SUM(CASE ds.id_ikatan_kerja WHEN 'A' THEN 1 ELSE 0 END) as Dosen_Tetap,
 SUM(CASE ds.id_ikatan_kerja WHEN 'B' THEN 1 ELSE 0 END) as Dosen_PNS_DPK,
 SUM(CASE ds.id_ikatan_kerja WHEN 'I' THEN 1 ELSE 0 END) as NIDK,
@@ -146,7 +152,7 @@ dosen_list_dosen ds
 WHERE 
 ds.id_ikatan_kerja in ('A','B','I')
 
-GROUP BY ds.kode_pt,ds.nama_pt
+GROUP BY ds.kode_pt,ds.nama_pt,ds.provinsi_pt
 ORDER BY ds.kode_pt"); 
 		return $query->result();
 	}
