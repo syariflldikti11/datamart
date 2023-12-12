@@ -83,7 +83,7 @@ SUM(CASE ds.jenjang_tertinggi WHEN 'Sp-1' THEN 1 ELSE 0 END) as Sp1,
 SUM(CASE ds.jenjang_tertinggi WHEN 'Sp-2' THEN 1 ELSE 0 END) as Sp2,
 SUM(CASE ds.jenjang_tertinggi WHEN 'S2 Terapan' THEN 1 ELSE 0 END) as S2_Terapan,
 SUM(CASE ds.jenjang_tertinggi WHEN 'S3 Terapan' THEN 1 ELSE 0 END) as S3_Terapan,
-SUM(CASE ds.jenjang_tertinggi WHEN NULL THEN 1 ELSE 0 END) as Tanpa_Jenjang,
+SUM(CASE  WHEN ds.jenjang_tertinggi is NULL THEN 1 ELSE 0 END) as Tanpa_Jenjang,
 count(jk) as Jumlah
 FROM 
 dosen_list_dosen ds
@@ -106,7 +106,7 @@ SUM(CASE ds.jabatan_akademik WHEN 'Asisten Ahli' THEN 1 ELSE 0 END) as Asisten_A
 SUM(CASE ds.jabatan_akademik WHEN 'Lektor' THEN 1 ELSE 0 END) as Lektor,
 SUM(CASE ds.jabatan_akademik WHEN 'Lektor Kepala' THEN 1 ELSE 0 END) as Lektor_Kepala,
 SUM(CASE ds.jabatan_akademik WHEN 'Profesor' THEN 1 ELSE 0 END) as Profesor,
-SUM(CASE ds.jabatan_akademik WHEN NULL THEN 1 ELSE 0 END) as Tanpa_Jabatan,
+SUM(CASE  WHEN ds.jabatan_akademik is NULL THEN 1 ELSE 0 END) as Tanpa_Jabatan,
 count(jk) as Jumlah
 FROM 
 dosen_list_dosen ds
@@ -146,7 +146,7 @@ ds.provinsi_pt,
 SUM(CASE ds.id_ikatan_kerja WHEN 'A' THEN 1 ELSE 0 END) as Dosen_Tetap,
 SUM(CASE ds.id_ikatan_kerja WHEN 'B' THEN 1 ELSE 0 END) as Dosen_PNS_DPK,
 SUM(CASE ds.id_ikatan_kerja WHEN 'I' THEN 1 ELSE 0 END) as NIDK,
-SUM(CASE ds.jabatan_akademik WHEN NULL THEN 1 ELSE 0 END) as Tanpa_Status,
+SUM(CASE  WHEN ds.id_ikatan_kerja is NULL THEN 1 ELSE 0 END) as Tanpa_Status,
 count(jk) as Jumlah
 FROM 
 dosen_list_dosen ds
