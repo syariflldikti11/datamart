@@ -1,4 +1,9 @@
 <div class="container-fluid">
+
+
+
+
+
 <div class="row">
             <div class="col-12">
               <div class="card">
@@ -18,13 +23,14 @@
                           <th>Kode PT</th>
                           <th>Nama PT</th>
                            <th>Provinsi</th>
-                          <th>Kab/Kota</th>
+                          <th>ID SMT</th>
+                          <th>Jumlah Dosen</th>
+                          <th>Jumlah Dosen Ajar</th>
+                          <th>Jumlah MHS</th>
+                          <th>Rasio</th>
                           
-                         
-                        
-                          <th>Akreditasi</th>
-                          <th>Tanggal Berlaku</th>
-                          <th>Tanggal Berakhir</th>
+                       
+                       
                         
                           
                         </tr>
@@ -37,12 +43,11 @@
                            <td><?= $d->kode_pt; ?></td>
                           <td><?= $d->nama_pt; ?></td>
                            <td><?= $d->provinsi_pt; ?></td>
-                          <td><?= $d->kab_kota_pt; ?></td>
+                          <td><?= $d->jumlah_dosen; ?></td>
+                          <td><?= $d->jumlah_dosen_ajar; ?></td>
+                          <td><?= $d->jumlah_mhs; ?></td>
+                          <td><?= $d->rasio; ?></td>
                          
-
-                          <td><?= $d->nm_akred; ?></td>
-                          <td><?= $d->tgl_sk_akred_sp; ?></td>
-                          <td><?= $d->tst_sk_akred_sp; ?></td>
                          
                         </tr>
                 
@@ -50,9 +55,11 @@
                             
                       <?php endforeach; ?>
                       </tbody>
+                     
                     </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+

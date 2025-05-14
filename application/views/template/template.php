@@ -452,51 +452,8 @@
                   
                 </ul>
               </li>
-               <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i data-feather="target" class="feather-icon"></i
-                  ><span class="hide-menu">Perencanaan</span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  
-                  <li class="sidebar-item">
-                    <a
-                      class="sidebar-link waves-effect waves-dark sidebar-link"
-                      href="#"
-                      aria-expanded="false"
-                      ><i class="mdi mdi-adjust"></i
-                      ><span class="hide-menu">Capaian IKU </span></a
-                    >
-                  </li>
-                   
-                </ul>
-              </li>
-             <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i data-feather="file-text" class="feather-icon"></i
-                  ><span class="hide-menu">Umum</span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  
-                 
-                   <li class="sidebar-item">
-                    <a
-                      class="sidebar-link waves-effect waves-dark sidebar-link"
-                      href="#"
-                      aria-expanded="false"
-                      ><i class="mdi mdi-adjust"></i
-                      ><span class="hide-menu">#</span></a
-                    >
-                  </li>
-                  
-                </ul>
-              </li>
+        
+            
             
               
             
@@ -781,7 +738,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?= base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script>
+   <script src="<?= base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?= base_url(); ?>assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -840,7 +797,7 @@ $(document).ready(function(){
     $(document).ready(function() {
  
         //datatables
-        table = $('#tb_dosen').DataTable({ 
+         table = $('#tb_dosen').DataTable({ 
  
             "processing": true, 
             "serverSide": true, 
@@ -850,7 +807,11 @@ $(document).ready(function(){
                 "url": "<?php echo site_url('sd/ajax_dosen')?>",
                 "type": "POST"
             },
- 
+  "layout": {
+        "topStart": {
+            "buttons": ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    },
              
             "columnDefs": [
             { 
@@ -860,8 +821,16 @@ $(document).ready(function(){
             ],
  
         });
+        
  
     });
+    table = new DataTable('#tb_dosen', {
+    layout: {
+        topStart: {
+            buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+        }
+    }
+});
  
 </script>
 <script type="text/javascript">
@@ -896,7 +865,7 @@ $(document).ready(function(){
     new Chart(document.getElementById("akre_ps_seluruh"), {
         type: 'bar',
         data: {
-            labels: ['A', 'B', 'C', 'Unggul', 'Baik Sekali', 'Baik', 'Belum Akreditasi'],
+            labels: ['A', 'B', 'C', 'Unggul', 'Baik Sekali', 'Baik', 'Belum Akreditasi','Tidak Terakreditasi'],
             datasets: [{
                     label: 'Akreditasi Program Studi',
                     data: [<?= $get_jumlah_akred_seluruh_ps->A ?>, <?= $get_jumlah_akred_seluruh_ps->B ?>,
@@ -904,7 +873,8 @@ $(document).ready(function(){
                         <?= $get_jumlah_akred_seluruh_ps->Unggul ?>,
                         <?= $get_jumlah_akred_seluruh_ps->Baik_Sekali ?>,
                         <?= $get_jumlah_akred_seluruh_ps->Baik ?>,
-                        <?= $get_jumlah_akred_seluruh_ps->Belum_akred ?>
+                        <?= $get_jumlah_akred_seluruh_ps->Belum_akred ?>,
+                        <?= $get_jumlah_akred_seluruh_ps->Tidak_Akred ?>
                     ],
                    backgroundColor: "#03a9f4",
                     fill: false,
@@ -948,34 +918,6 @@ $(document).ready(function(){
         }
     });
     </script>
-     <script type="text/javascript">
-    new Chart(document.getElementById("bar"), {
-        type: 'bar',
-        data: {
-            labels: ['A', 'B', 'C', 'Unggul', 'Baik Sekali', 'Baik', 'Belum Akreditasi'],
-            datasets: [{
-                    label: 'Akreditasi Prodi',
-                    data: [<?= $get_akred_ps_by_pt->A ?>,
-                        <?= $get_akred_ps_by_pt->B ?>,
-                        <?= $get_akred_ps_by_pt->C ?>,
-                        <?= $get_akred_ps_by_pt->Unggul ?>,
-                        <?= $get_akred_ps_by_pt->Baik_Sekali ?>,
-                        <?= $get_akred_ps_by_pt->Baik ?>,
-                        <?= $get_akred_ps_by_pt->Belum_akred ?>
-                    ],
-                    backgroundColor: "#03a9f4",
-                    fill: false,
-                },
-
-            ],
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Akreditasi Program Studi'
-            }
-        }
-    });
-    </script>
+    
   </body>
 </html>
