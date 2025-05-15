@@ -31,6 +31,23 @@ class Dashboard extends CI_Controller {
         );       
         $this->template->load('dashboard/template', 'dashboard/home', $data);
 }
+function detail_pt($kode_pt)
+    {
+        $data = array(
+            'judul' => 'Profil Perguruan Tinggi',
+            'menu' => 'kelembagaan',
+            'sub_menu' => 'profil_pt',
+            'get_detail_pt' => $this->m_pts->get_detail_pt($kode_pt),
+          'dt_prodi' => $this->m_prodi->get_prodi($kode_pt),
+             'gf_bidang_prodi' => $this->m_prodi->view_bidang_prodi($kode_pt),
+             'gf_akred_prodi' => $this->m_prodi->view_akred_prodi($kode_pt),
+             'gf_jenjang_prodi' => $this->m_prodi->view_jenjang_prodi($kode_pt),
+             'gf_nama_prodi' => $this->m_prodi->view_nama_prodi($kode_pt),
+            
+        );
+        // print_r($data);
+        $this->template->load('dashboard/template', 'dashboard/detail_pt', $data);
+    }
 function pelaporan_pt()
     {
      $kode_pt = $this->input->post('kode_pt');

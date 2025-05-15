@@ -83,6 +83,7 @@
                      <thead>
                         <tr>
                           <th>No</th>
+                          <th>Opsi</th>
                           <th>Kode PT</th>
                           <th>Nama PT</th>
                           <th>Bentuk</th>
@@ -106,6 +107,11 @@
                   <?php foreach($dt_pt as $d): ?>
                         <tr>
                           <td><?= $no++; ?></td>
+                           <td> <center><a  data-tooltip="tooltip"
+                      data-bs-placement="top"
+                      title="View" 
+                   href="<?php echo base_url('dashboard/detail_pt/'.$d->kode_pt);?>" 
+                    ><i class="fa fa-eye"></i></a></center></td>
                            <td><?= $d->kode_pt; ?></td>
                           <td><?= $d->nama_pt; ?></td>
                           <td><?= $d->nm_bp; ?></td>

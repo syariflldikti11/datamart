@@ -29,6 +29,11 @@ function get_pt($provinsi)
                 ");
              return $query->result();
         }
+       function get_detail_pt($kode_pt)
+{
+    return $this->db->get_where('pt', ['kode_pt' => $kode_pt])->row();
+}
+
       
         
 	
