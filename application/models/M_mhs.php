@@ -52,54 +52,59 @@ function get_pelaporan_pt($kode_pt)
         return $query->result();
     }
     function view_jumlah_mhs_smt($kode_pt)
-         {      
-            $query =$this->db->query("
-                    SELECT id_smt,sum(jumlah_mhs) as jumlah from pelaporan_pt
-                    where kode_pt=$kode_pt group by id_smt
-                ");
-             return $query->result();
-        }
-           function view_jumlah_mhs_smt_provinsi($provinsi)
-         {      
-            $query =$this->db->query("
-                    SELECT id_smt,sum(jumlah_mhs) as jumlah from pelaporan_pt
-                    where provinsi_pt='$provinsi' group by id_smt
-                ");
-             return $query->result();
-        }
-        function view_mhs_masuk($kode_pt)
-         {      
-            $query =$this->db->query("
-                    SELECT tahun,sum(jumlah) as jumlah from rekap_mahasiswa_masuk
-                    where kode_pt=$kode_pt group by tahun
-                ");
-             return $query->result();
-        }
-         function view_mhs_keluar($kode_pt)
-         {      
-            $query =$this->db->query("
-                    SELECT tahun,sum(jumlah) as jumlah from rekap_mahasiswa_keluar
-                    where kode_pt=$kode_pt group by tahun
-                ");
-             return $query->result();
-        }
-        
-         function view_mhs_masuk_provinsi($provinsi)
-         {      
-            $query =$this->db->query("
-                    SELECT tahun,sum(jumlah) as jumlah from rekap_mahasiswa_masuk
-                    where provinsi_pt='$provinsi' group by tahun
-                ");
-             return $query->result();
-        }
-         function view_mhs_keluar_provinsi($provinsi)
-         {      
-            $query =$this->db->query("
-                    SELECT tahun,sum(jumlah) as jumlah from rekap_mahasiswa_keluar
-                    where provinsi_pt='$provinsi' group by tahun
-                ");
-             return $query->result();
-        }
+    {
+        $this->db->select('id_smt, SUM(jumlah_mhs) as jumlah');
+        $this->db->from('pelaporan_pt');
+        $this->db->where('kode_pt', $kode_pt);
+        $this->db->group_by('id_smt');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_jumlah_mhs_smt_provinsi($provinsi)
+    {
+        $this->db->select('id_smt, SUM(jumlah_mhs) as jumlah');
+        $this->db->from('pelaporan_pt');
+        $this->db->where('provinsi_pt', $provinsi);
+        $this->db->group_by('id_smt');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_mhs_masuk($kode_pt)
+    {
+        $this->db->select('tahun, SUM(jumlah) as jumlah');
+        $this->db->from('rekap_mahasiswa_masuk');
+        $this->db->where('kode_pt', $kode_pt);
+        $this->db->group_by('tahun');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_mhs_keluar($kode_pt)
+    {
+        $this->db->select('tahun, SUM(jumlah) as jumlah');
+        $this->db->from('rekap_mahasiswa_keluar');
+        $this->db->where('kode_pt', $kode_pt);
+        $this->db->group_by('tahun');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_mhs_masuk_provinsi($provinsi)
+    {
+        $this->db->select('tahun, SUM(jumlah) as jumlah');
+        $this->db->from('rekap_mahasiswa_masuk');
+        $this->db->where('provinsi_pt', $provinsi);
+        $this->db->group_by('tahun');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_mhs_keluar_provinsi($provinsi)
+    {
+        $this->db->select('tahun, SUM(jumlah) as jumlah');
+        $this->db->from('rekap_mahasiswa_keluar');
+        $this->db->where('provinsi_pt', $provinsi);
+        $this->db->group_by('tahun');
+        $query = $this->db->get();
+        return $query->result();
+    }
         
 	
 }

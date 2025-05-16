@@ -14,21 +14,23 @@ function get_pt($provinsi)
 
 
     function view_bentuk_pt($provinsi)
-         {      
-            $query =$this->db->query("
-                    SELECT nm_bp,count(nm_bp) as jumlah from pt
-                    where provinsi='$provinsi' group by nm_bp
-                ");
-             return $query->result();
-        }
-        function view_akred_pt($provinsi)
-         {      
-          $query =$this->db->query("
-                    SELECT nm_akred,count(nm_akred) as jumlah from pt
-                    where provinsi='$provinsi' group by nm_akred
-                ");
-             return $query->result();
-        }
+    {
+        $this->db->select('nm_bp, COUNT(nm_bp) as jumlah');
+        $this->db->from('pt');
+        $this->db->where('provinsi', $provinsi);
+        $this->db->group_by('nm_bp');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function view_akred_pt($provinsi)
+    {
+        $this->db->select('nm_akred, COUNT(nm_akred) as jumlah');
+        $this->db->from('pt');
+        $this->db->where('provinsi', $provinsi);
+        $this->db->group_by('nm_akred');
+        $query = $this->db->get();
+        return $query->result();
+    }
        function get_detail_pt($kode_pt)
 {
     return $this->db->get_where('pt', ['kode_pt' => $kode_pt])->row();

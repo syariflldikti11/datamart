@@ -92,7 +92,19 @@
                       role="tab"
                       aria-controls="pills-setting"
                       aria-selected="false"
-                      >Setting</a
+                      >Mahasiswa</a
+                    >
+                  </li>
+                    <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="pills-pelaporan-tab"
+                      data-bs-toggle="pill"
+                      href="#pelaporan-month"
+                      role="tab"
+                      aria-controls="pills-pelaporan"
+                      aria-selected="false"
+                      >Pelaporan PT</a
                     >
                   </li>
                 </ul>
@@ -208,58 +220,70 @@
                         <div class="col-md-4 col-xs-6 b-r">
                          <div id="dosen_jk"></div>
                         </div>
+                        <div class="col-md-4 col-xs-6 b-r">
+                         <div id="dosen_sertifikasi"></div>
+                        </div>
                       </div>
                       <div class="row">
                         <div class="table-responsive">
                       
                       <hr />
-                       <h4 class="font-weight-medium mt-4">Data Prodi</h4>
-                    <table
-                      id="zero_config"
+                       <h4 class="font-weight-medium mt-4">Data Dosen</h4>
+                     
+
+                      <table
+                      id="dosenn"
                       class="table table-striped table-bordered"
                     >
                      <thead>
                         <tr>
-                          <th>No</th>
+                         <th>No</th>
+                            <!--<th>Opsi</th>-->
                           <th>Kode PT</th>
                           <th>Nama PT</th>
-                           <th>Provinsi</th>
-                          <th>Kab/Kota</th>
-                          <th>Kode Prodi</th>
-                          <th>Nama prodi</th>
+                          <th>Provinsi PT</th>
+                          <th>Kode prodi</th>
+                          <th>Nama Prodi</th>
                           <th>Jenjang</th>
-                          <th>Bidang</th>
-                          
-                          <th>Tanggal Berdiri</th>
-                          <th>SK Akred</th>
-                        
-                          <th>Akreditasi</th>
-                         
-                         <th>Tgl SK Akred</th>
-                            <th>Last Update</th>
+                          <th>Registrasi</th>
+                           <th>NUPTK</th>
+                          <th>NIDN</th>
+                          <th>Nama</th>
+                          <th>JK</th>
+                          <th>Pendidikan</th>
+                          <th>Jabatan Akademik</th>
+                          <th>TMT SK Jabfung</th>
+                          <th>Ikatan Kerja</th>
+                          <th>Status Aktif</th>
+                          <th>Status Pegawai</th>
+                          <th>Tahun Sertifikasi</th>
                           
                         </tr>
                       </thead>
                       <tbody>
                          <?php $no=1; ?>
-                  <?php foreach($dt_prodi as $d): ?>
+                  <?php foreach($dt_dosen as $gt): ?>
                         <tr>
                           <td><?= $no++; ?></td>
-                           <td><?= $d->kode_pt; ?></td>
-                          <td><?= $d->nama_pt; ?></td>
-                           <td><?= $d->provinsi; ?></td>
-                          <td><?= $d->kab_kota_pt; ?></td>
-                          <td><?= $d->kode_prodi; ?></td>
-                          <td><?= $d->nm_prodi; ?></td>
-                          <td><?= $d->nm_jenj_didik; ?></td>
-                          <td><?= $d->nm_kel_bidang; ?></td>
-                          <td><?= $d->tgl_berdiri; ?></td>
-                          <td><?= $d->sk_akred_prodi; ?></td>
-
-                          <td><?= $d->nm_akred; ?></td>
-                         
-                          <td><?= $d->tgl_sk_akred_prodi; ?></td>
-                            <td><?= $d->last_sync; ?></td>
+                    <td><?= $gt->kode_pt; ?> </td> 
+         
+          <td><?= $gt->nama_pt; ?> </td> 
+          <td><?= $gt->provinsi_pt; ?> </td> 
+          <td><?= $gt->kode_prodi; ?> </td> 
+          <td><?= $gt->nm_prodi; ?> </td> 
+          <td><?= $gt->jenjang_prodi; ?> </td> 
+          <td><?= $gt->Kelompok_No_Reg; ?> </td> 
+           <td><?= $gt->nuptk; ?> </td>  
+          <td><?= $gt->nidn; ?> </td>  
+          <td><?= $gt->nama_dosen; ?> </td> 
+          <td><?= $gt->jk; ?> </td> 
+          <td><?= $gt->jenjang_tertinggi; ?> </td> 
+          <td><?= $gt->jabatan_akademik; ?> </td> 
+                  <td><?= $gt->tmt_sk_jabfung; ?> </td> 
+          <td><?= $gt->nm_ikatan_kerja; ?> </td> 
+          <td><?= $gt->nm_stat_aktif; ?> </td> 
+          <td><?= $gt->nm_stat_pegawai; ?> </td> 
+          <td><?= $gt->thn_sert; ?> </td> 
                         </tr>
                 
                   
@@ -278,81 +302,93 @@
                     role="tabpanel"
                     aria-labelledby="pills-setting-tab"
                   >
-                    <div class="card-body">
-                      <form class="form-horizontal form-material">
-                        <div class="mb-3">
-                          <label class="col-md-12">Full Name</label>
-                          <div class="col-md-12">
-                            <input
-                              type="text"
-                              placeholder="Johnathan Doe"
-                              class="form-control form-control-line"
-                            />
-                          </div>
+                          <div class="card-body">
+                       <div class="row">
+                       <div class="col-md-12 col-xs-6 b-r">
+                         <div id="jumlah_mhs_smtt"></div>
                         </div>
-                        <div class="mb-3">
-                          <label for="example-email" class="col-md-12"
-                            >Email</label
-                          >
-                          <div class="col-md-12">
-                            <input
-                              type="email"
-                              placeholder="johnathan@admin.com"
-                              class="form-control form-control-line"
-                              name="example-email"
-                              id="example-email"
-                            />
-                          </div>
+                        <div class="col-md-6 col-xs-6 b-r">
+                         <div id="mhs_masuk"></div>
                         </div>
-                        <div class="mb-3">
-                          <label class="col-md-12">Password</label>
-                          <div class="col-md-12">
-                            <input
-                              type="password"
-                              value="password"
-                              class="form-control form-control-line"
-                            />
-                          </div>
+                         <div class="col-md-6 col-xs-6 b-r">
+                          <div id="mhs_keluar"></div>
                         </div>
-                        <div class="mb-3">
-                          <label class="col-md-12">Phone No</label>
-                          <div class="col-md-12">
-                            <input
-                              type="text"
-                              placeholder="123 456 7890"
-                              class="form-control form-control-line"
-                            />
-                          </div>
+                      </div>
+                   
+                    </div>
+                  </div>
+                   <div
+                    class="tab-pane fade"
+                    id="pelaporan-month"
+                    role="tabpanel"
+                    aria-labelledby="pills-pelaporan-tab"
+                  >
+                          <div class="card-body">
+                       <div class="row">
+                       <div class="col-md-12 col-xs-6 b-r">
+                         <div id="jumlah_dosen_smt"></div>
                         </div>
-                        <div class="mb-3">
-                          <label class="col-md-12">Message</label>
-                          <div class="col-md-12">
-                            <textarea
-                              rows="5"
-                              class="form-control form-control-line"
-                            ></textarea>
-                          </div>
+                        <div class="col-md-12 col-xs-6 b-r">
+                                 <div id="jumlah_dosen_ajar_smt"></div>
                         </div>
-                        <div class="mb-3">
-                          <label class="col-sm-12">Select Country</label>
-                          <div class="col-sm-12">
-                            <select class="form-control form-control-line">
-                              <option>London</option>
-                              <option>India</option>
-                              <option>Usa</option>
-                              <option>Canada</option>
-                              <option>Thailand</option>
-                            </select>
-                          </div>
+                         <div class="col-md-12 col-xs-6 b-r">
+                        <div id="jumlah_mhs_smt"></div>
                         </div>
-                        <div class="mb-3">
-                          <div class="col-sm-12">
-                            <button class="btn btn-success">
-                              Update Profile
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+                      </div>
+                        <div class="row">
+                        <div class="table-responsive">
+                      
+                      <hr />
+                       <h4 class="font-weight-medium mt-4">Data Pelaporan</h4>
+                    <table
+                      id="zero_configg"
+                      class="table table-striped table-bordered"
+                    >
+                     <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Kode PT</th>
+                          <th>Nama PT</th>
+                           <th>Provinsi</th>
+                                                      <th>Kota/Kab</th>
+                          <th>ID SMT</th>
+                          <th>Jumlah Dosen</th>
+                          <th>Jumlah Dosen Ajar</th>
+                          <th>Jumlah MHS</th>
+                          <th>Rasio</th>
+                           <th>Last Update</th>
+                       
+                       
+                        
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <?php $no=1; ?>
+                  <?php foreach($dt_pelaporan_pt as $h): ?>
+                        <tr>
+                          <td><?= $no++; ?></td>
+                           <td><?= $h->kode_pt; ?></td>
+                          <td><?= $h->nama_pt; ?></td>
+                           <td><?= $h->provinsi_pt; ?></td>
+                              <td><?= $h->kab_kota_pt; ?></td>
+                            <td><?= $h->id_smt; ?></td>
+                          <td><?= $h->jumlah_dosen; ?></td>
+                          <td><?= $h->jumlah_dosen_ajar; ?></td>
+                          <td><?= $h->jumlah_mhs; ?></td>
+                          <td><?= $h->rasio; ?></td>
+                         
+                           <td><?= $h->last_sync; ?></td>
+                        </tr>
+                
+                  
+                            
+                      <?php endforeach; ?>
+                      </tbody>
+                     
+                    </table>
+                  </div>
+                      </div>
                     </div>
                   </div>
                 </div>

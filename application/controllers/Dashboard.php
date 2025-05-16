@@ -50,8 +50,17 @@ function detail_pt($kode_pt)
              'gf_dosen_kelompok' => $this->m_dosen->view_dosen_kelompok($kode_pt),
              'gf_dosen_stat_aktif' => $this->m_dosen->view_dosen_stat_aktif($kode_pt),
              'gf_dosen_stat_pegawai' => $this->m_dosen->view_dosen_stat_pegawai($kode_pt),
+              'dt_dosen' => $this->m_dosen->get_dosen($kode_pt),
+             'gf_dosen_serdos' => $this->m_dosen->view_dosen_serdos($kode_pt),
              'dt_jumlah_dosen' => $this->m_dosen->view_jumlah_dosen($kode_pt),
-            
+               'gf_jumlah_mhs_smt' => $this->m_mhs->view_jumlah_mhs_smt($kode_pt),
+                'gf_mhs_masuk' => $this->m_mhs->view_mhs_masuk($kode_pt),
+                 'gf_mhs_keluar' => $this->m_mhs->view_mhs_keluar($kode_pt),
+                  'gf_jumlah_mhs_smt' => $this->m_pelaporan_pt->view_jumlah_mhs_smt($kode_pt),
+               'gf_jumlah_dosen_smt' => $this->m_pelaporan_pt->view_jumlah_dosen_smt($kode_pt),
+               'gf_jumlah_dosen_ajar_smt' => $this->m_pelaporan_pt->view_jumlah_dosen_ajar_smt($kode_pt),
+            'dt_pelaporan_pt' => $this->m_pelaporan_pt->get_pelaporan_pt($kode_pt),
+           
         );
         // print_r($data);
         $this->template->load('dashboard/template', 'dashboard/detail_pt', $data);

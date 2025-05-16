@@ -680,6 +680,18 @@
             "cache": true, 
         });
     </script>
+    <script>
+        //setting datatables
+        $('#zero_configg').DataTable({
+            "cache": true, 
+        });
+    </script>
+     <script>
+        //setting datatables
+        $('#dosenn').DataTable({
+            "cache": true, 
+        });
+    </script>
    <?php
     // Data institusi pendidikan
 
@@ -1441,6 +1453,105 @@
 
     </script>
 
+     <script>
+       var categories = <?php echo json_encode(array_column($gf_dosen_serdos, 'kategori')); ?>;
+            var seriesData = <?php echo json_encode(array_column($gf_dosen_serdos, 'jumlah'),JSON_NUMERIC_CHECK); ?>;
+// Logging to verify correct types
+            
+       Highcharts.chart('dosen_sertifikasi', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Dosen Berdasarkan Jenis Sertifikasi',
+        align: 'center'
+    },
+
+    xAxis: {
+        categories: categories,
+        crosshair: true,
+        accessibility: {
+            description: 'Countries'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    
+    plotOptions: {
+                            column: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: true
+                            }
+                        },
+    series: [
+        {
+            name: 'Jumlah',
+            data: seriesData,
+              colorByPoint: true,
+                            
+                            showInLegend: false
+        }
+       
+    ]
+});
+
+    </script>
+
+<script>
+       var categories = <?php echo json_encode(array_column($gf_jumlah_mhs_smt, 'id_smt')); ?>;
+            var seriesData = <?php echo json_encode(array_column($gf_jumlah_mhs_smt, 'jumlah'),JSON_NUMERIC_CHECK); ?>;
+// Logging to verify correct types
+            
+       Highcharts.chart('jumlah_mhs_smtt', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Mahasiswa Per Semester',
+        align: 'center'
+    },
+
+    xAxis: {
+        categories: categories,
+        crosshair: true,
+        accessibility: {
+            description: 'Countries'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    
+    plotOptions: {
+                            column: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: true
+                            }
+                        },
+    series: [
+        {
+            name: 'Jumlah',
+            data: seriesData,
+              colorByPoint: true,
+                            
+                            showInLegend: false
+        }
+       
+    ]
+});
+
+    </script>
  <script>
        var categories = <?php echo json_encode(array_column($gf_jumlah_mhs_smt, 'id_smt')); ?>;
             var seriesData = <?php echo json_encode(array_column($gf_jumlah_mhs_smt, 'jumlah'),JSON_NUMERIC_CHECK); ?>;
