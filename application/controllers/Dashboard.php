@@ -43,6 +43,14 @@ function detail_pt($kode_pt)
              'gf_akred_prodi' => $this->m_prodi->view_akred_prodi($kode_pt),
              'gf_jenjang_prodi' => $this->m_prodi->view_jenjang_prodi($kode_pt),
              'gf_nama_prodi' => $this->m_prodi->view_nama_prodi($kode_pt),
+               'gf_dosen_ikatan_kerja' => $this->m_dosen->view_dosen_ikatan_kerja($kode_pt),
+             'gf_dosen_jabfung' => $this->m_dosen->view_dosen_jabfung($kode_pt),
+             'gf_dosen_jenjang_tertinggi' => $this->m_dosen->view_dosen_jenjang_tertinggi($kode_pt),
+             'gf_dosen_jk' => $this->m_dosen->view_dosen_jk($kode_pt),
+             'gf_dosen_kelompok' => $this->m_dosen->view_dosen_kelompok($kode_pt),
+             'gf_dosen_stat_aktif' => $this->m_dosen->view_dosen_stat_aktif($kode_pt),
+             'gf_dosen_stat_pegawai' => $this->m_dosen->view_dosen_stat_pegawai($kode_pt),
+             'dt_jumlah_dosen' => $this->m_dosen->view_jumlah_dosen($kode_pt),
             
         );
         // print_r($data);
